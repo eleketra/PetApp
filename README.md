@@ -10,3 +10,5 @@ development.
 The app has two parts- one where you list all the pets and their details and second where you can add new pet or edit the details 
 of the existing pet. The main purpose of the app is to learn how to create , connect , store , modify and access the database.
 
+Thanks to the udacity for providing such a great content and experience.
+

@@ -1,0 +1,52 @@
+package com.example.pet.data
+
+import android.net.Uri
+import android.provider.BaseColumns
+import android.text.style.TtsSpan
+import android.text.style.TtsSpan.GENDER_FEMALE
+import android.text.style.TtsSpan.GENDER_MALE
+
+
+class PetContract {
+    constructor()
+
+    //kotlin does not support static member of the class but companion object gives
+    // the same feature. for public constants.
+       companion object{
+       val CONTENT_AUTHORITY = "com.example.android.pets"
+       val BASE_CONTENT_URI = Uri.parse("content://$CONTENT_AUTHORITY")
+       val PATH_PETS = "pets"
+       val CONTENT_URI = Uri.withAppendedPath(BASE_CONTENT_URI, PATH_PETS)
+   }
+    // each table in the database will have Entry
+    //entry for the Pets
+    object PetEntry  : BaseColumns{
+          val TABLE_NAME:String="pets"
+          val _ID:String=BaseColumns._ID
+          val COLUMN_PET_NAME:String="name"
+          val COLUMN_PET_BREED:String="breed"
+
+        /**
+         * Gender of the pet.
+         *
+         * The only possible values are {@link #GENDER_UNKNOWN}, {@link #GENDER_MALE},
+         * or {@link #GENDER_FEMALE}.
+         *
+         * Type: INTEGER
+         */
+          val COLUMN_PET_GENDER:String="gender"
+          val COLUMN_PET_WEIGHT:String="weight"
+
+          val GENDER_UNKNOWN:Int = 0;
+           val  GENDER_MALE:Int = 1;
+           val GENDER_FEMALE:Int = 2;
+
+        fun isValidGender(gender: Int): Boolean {
+            return gender == GENDER_UNKNOWN || gender == GENDER_MALE || gender == GENDER_FEMALE
+        }
+
+        }
+
+
+    }
+
